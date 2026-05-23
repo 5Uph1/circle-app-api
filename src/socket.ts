@@ -2,10 +2,7 @@ import { Server } from "socket.io";
 import { Server as HttpServer } from "http";
 import IORedis from "ioredis";
 
-const sub = new IORedis({
-  host: process.env.REDIS_HOST || "127.0.0.1",
-  port: parseInt(process.env.REDIS_PORT || "6379"),
-  password: process.env.REDIS_PASSWORD || undefined,
+const sub = new IORedis(process.env.REDIS_URL || "redis://127.0.0.1:6379", {
   maxRetriesPerRequest: null,
 });
 

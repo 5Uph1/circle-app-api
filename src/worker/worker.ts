@@ -4,17 +4,14 @@ import { prisma } from "../connections/client";
 import { formatThread } from "../controllers/thread";
 import { formatReply } from "../controllers/reply";
 
-const connection = new IORedis({
-  host: process.env.REDIS_HOST || "127.0.0.1",
-  port: parseInt(process.env.REDIS_PORT || "6379"),
-  password: process.env.REDIS_PASSWORD || undefined,
-  maxRetriesPerRequest: null,
-});
+const connection = new IORedis(
+  process.env.REDIS_URL || "redis://127.0.0.1:6379",
+  {
+    maxRetriesPerRequest: null,
+  },
+);
 
-const pub = new IORedis({
-  host: process.env.REDIS_HOST || "127.0.0.1",
-  port: parseInt(process.env.REDIS_PORT || "6379"),
-  password: process.env.REDIS_PASSWORD || undefined,
+const pub = new IORedis(process.env.REDIS_URL || "redis://127.0.0.1:6379", {
   maxRetriesPerRequest: null,
 });
 
