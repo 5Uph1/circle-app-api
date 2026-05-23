@@ -12,7 +12,7 @@ export const getIO = () => io;
 
 export const initSocket = (server: HttpServer) => {
   io = new Server(server, {
-    cors: { origin: "*" },
+    cors: { origin: process.env.FRONTEND_URL || "*" },
   });
 
   // Subscribe thread-created

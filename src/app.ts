@@ -10,13 +10,17 @@ import { follow } from "./routes/follow";
 import "./worker/worker";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const server = http.createServer(app);
 
 initSocket(server);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "*",
+  }),
+);
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
