@@ -25,4 +25,4 @@ user.get("/suggested", authenticate, suggestedUsers);
 
 user.get("/profile/:id", authenticate, getUserProfile);
 
-user.put("/edit", authenticate, upload.single("photo"), updateProfile);
+user.put("/edit", authenticate, upload.single("photo_profile"), updateProfile);
