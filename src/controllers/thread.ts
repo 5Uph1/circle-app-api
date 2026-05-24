@@ -10,6 +10,7 @@ export const formatThread = (thread: any, userId?: number) => ({
   image: thread.image,
   created_at: thread.created_at,
   user: {
+    id: thread.creator.id,
     username: thread.creator.username,
     name: thread.creator.full_name,
     profile_picture: thread.creator.photo_profile,
