@@ -157,7 +157,7 @@ export const updateProfile = async (req: AuthRequest, res: Response) => {
   } catch (error: any) {
     return res.status(500).json({
       status: "error",
-      message: error.message,
+      message: error?.message ?? JSON.stringify(error),
     });
   }
 };
