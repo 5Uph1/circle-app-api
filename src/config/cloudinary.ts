@@ -8,6 +8,12 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+console.log("Cloudinary config:", {
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY ? "ada" : "KOSONG",
+  api_secret: process.env.CLOUDINARY_API_SECRET ? "ada" : "KOSONG",
+});
+
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
