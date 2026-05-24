@@ -32,10 +32,21 @@ user.put(
     console.log("HIT /user/edit");
     next();
   },
-  upload.single("photo_profile"),
   (req, res, next) => {
-    console.log("Setelah multer, req.file:", req.file);
-    next();
+    upload.single("photo_profile")(req, res, (err) => {
+      if (err) {
+        console.error(
+          "Multer/Cloudinary error:",
+          JSON.stringify(err, Object.getOwnPropertyNames(err)),
+        );
+        return res.status(500).json({ status: "error", message: err.message });
+      }
+      console.log(
+        "Upload sukses, req.file:",
+        req.file?.path ?? "tidak ada file",
+      );
+      next();
+    });
   },
   updateProfile,
 );
