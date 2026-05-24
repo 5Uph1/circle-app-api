@@ -155,9 +155,13 @@ export const updateProfile = async (req: AuthRequest, res: Response) => {
       data: updatedUser,
     });
   } catch (error: any) {
+    console.error(
+      "updateProfile error detail:",
+      JSON.stringify(error, Object.getOwnPropertyNames(error)),
+    );
     return res.status(500).json({
       status: "error",
-      message: error?.message ?? JSON.stringify(error),
+      message: error?.message ?? "Unknown error",
     });
   }
 };
