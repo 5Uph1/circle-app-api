@@ -66,7 +66,7 @@ export const postReply = async (req: AuthRequest, res: Response) => {
     return res.status(400).json({ message: "Content tidak boleh kosong" });
 
   try {
-    const image = req.file ? req.file.filename : null;
+    const image = req.file ? req.file.path : null;
 
     // ✅ Masukkan ke queue, tidak langsung insert ke DB
     await replyQueue.add("create-reply", {

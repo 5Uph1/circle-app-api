@@ -97,7 +97,7 @@ export const postThread = async (req: AuthRequest, res: Response) => {
       return res.status(500).json({ message: "user kosong" });
     }
 
-    const image = req.file ? req.file.filename : null;
+    const image = req.file ? req.file.path : null;
 
     // MASUKKAN KE QUEUE
     await threadQueue.add("create-thread", {
